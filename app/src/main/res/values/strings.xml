@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">BreakingBadTask</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="hint_search">Search by name of character</string>
+
+    <string name="text_ok">OK</string>
+    <string name="text_cancel">Cancel</string>
+
+     <string name="cat_card_rich_media_logo_view_description">Card Logo</string>
+    <string name="cat_card_rich_media_image_view_description">Card Image</string>
+
+    <string name="app_bar_description">Bottom App Bar</string>
+
+    <string name="menu_item_one">Season 1</string>
+    <string name="menu_item_two">Season 2</string>
+    <string name="menu_item_three">Season 3</string>
+    <string name="menu_item_four">Season 4</string>
+    <string name="menu_item_five">Season 5</string>
+    <string name="menu_item_search">Search</string>
+
+    <string name="error_empty_list">There are no characters found.</string>
+
+    <string name="tv_details_name">%1$s - %2$s</string>
+    <string name="tv_details_occupation">Occupation: %1$s</string>
+    
+    <string name="tv_details_appearance">Appeared in seasons: %1$s</string>
+</resources>

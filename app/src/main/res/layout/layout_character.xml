@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/cat_card_single_spacing"
+    android:background="@color/grey_100"
+    android:clickable="true"
+    android:focusable="true"
+    android:minHeight="@dimen/cat_card_rich_media_demo_min_height">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/cat_card_double_spacing"
+        android:paddingBottom="@dimen/cat_card_single_spacing">
+
+        <TextView
+            android:id="@+id/tv_name"
+            style="?attr/textAppearanceHeadline5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/cat_card_single_spacing"
+            android:ellipsize="end"
+            android:maxLines="1"
+            app:layout_constraintEnd_toStartOf="@id/iv_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/cat_card_single_spacing"
+            android:layout_marginEnd="@dimen/cat_card_double_spacing"
+            android:ellipsize="end"
+            android:maxLines="2"
+            app:layout_constraintEnd_toStartOf="@+id/iv_image"
+            app:layout_constraintStart_toStartOf="@id/tv_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_name" />
+
+        <ImageView
+            android:id="@+id/iv_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_marginEnd="@dimen/cat_card_single_spacing"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/cat_card_rich_media_image_view_description"
+            android:scaleType="centerCrop"
+            app:backgroundTint="@color/material_on_surface_emphasis_medium"
+            app:backgroundTintMode="add"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/mb_nickname"
+            style="?attr/borderlessButtonStyle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/cat_card_single_spacing"
+            android:layout_marginEnd="@dimen/cat_card_single_spacing"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:clickable="false"
+            android:textAlignment="viewStart"
+            app:layout_constraintEnd_toStartOf="@id/iv_image"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_description" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</com.google.android.material.card.MaterialCardView>
+

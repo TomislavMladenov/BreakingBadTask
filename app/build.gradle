@@ -1,0 +1,118 @@
+import dependencies.AndroidTestDependencies
+import dependencies.AnnotationProcessing
+import dependencies.Dependencies
+import dependencies.Java
+import dependencies.SupportDependencies
+import dependencies.TestDependencies
+import dependencies.Versions
+
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+android {
+    compileSdkVersion Versions.compilesdk
+    buildToolsVersion Versions.build
+
+    defaultConfig {
+        applicationId dependencies.Application.id
+        minSdkVersion Versions.minsdk
+        targetSdkVersion Versions.targetsdk
+        versionCode dependencies.Application.version_code
+        versionName dependencies.Application.version_name
+
+        testInstrumentationRunner "com.breaking.bad.framework.presentation.MyTestRunner"
+
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = Java.java_version
+    }
+
+    testOptions {
+        unitTests.all {
+            useJUnitPlatform()
+        }
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+    configurations.all {
+        resolutionStrategy.force 'com.google.code.findbugs:jsr305:3.0.0'
+    }
+
+    hilt {
+        enableTransformForLocalTests = true
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    //Kotlin
+    implementation Dependencies.kotlin_standard_library
+    implementation Dependencies.kotlin_reflect
+    implementation Dependencies.ktx
+    implementation Dependencies.navigation_runtime
+    implementation Dependencies.navigation_ui
+    implementation Dependencies.navigation_fragment
+    implementation Dependencies.leak_canary
+    implementation Dependencies.markdown_processor
+    implementation Dependencies.retrofit
+    implementation Dependencies.retrofit_gson
+    implementation Dependencies.kotlin_coroutines
+    implementation Dependencies.kotlin_coroutines_android
+    implementation Dependencies.material_dialogs_input
+    implementation AndroidTestDependencies.idling_resource
+    implementation Dependencies.hilt_dagger
+    implementation Dependencies.hilt_viewmodel
+    implementation Dependencies.back_fragment
+    implementation Dependencies.glide
+
+    kapt AnnotationProcessing.hilt_viewmodel_compiler
+    kapt AnnotationProcessing.hilt_dagger_compiler
+    kapt AnnotationProcessing.glide_compiler
+
+    implementation SupportDependencies.swipe_refresh_layout
+    implementation SupportDependencies.appcompat
+    implementation SupportDependencies.constraintlayout
+    implementation SupportDependencies.material_design
+
+    testImplementation TestDependencies.mockk
+    testImplementation TestDependencies.jupiter_api
+    testImplementation TestDependencies.jupiter_params
+    testImplementation TestDependencies.junit4
+    testRuntimeOnly TestDependencies.jupiter_engine
+
+    androidTestImplementation AndroidTestDependencies.kotlin_test
+    androidTestImplementation AndroidTestDependencies.coroutines_test
+    androidTestImplementation AndroidTestDependencies.espresso_core
+    androidTestImplementation AndroidTestDependencies.espresso_contrib
+    androidTestImplementation AndroidTestDependencies.idling_resource
+    androidTestImplementation AndroidTestDependencies.mockk_android
+    androidTestImplementation AndroidTestDependencies.test_runner
+    androidTestImplementation AndroidTestDependencies.test_rules
+    androidTestImplementation AndroidTestDependencies.text_core_ktx
+    androidTestImplementation AndroidTestDependencies.navigation_testing
+    androidTestImplementation AndroidTestDependencies.hilt_testing
+    debugImplementation AndroidTestDependencies.fragment_testing
+
+    kaptAndroidTest AnnotationProcessing.hilt_dagger_compiler
+
+}

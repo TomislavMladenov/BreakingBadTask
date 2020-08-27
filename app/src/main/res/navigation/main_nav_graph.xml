@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav_graph"
+    app:startDestination="@id/listFragment">
+
+    <fragment
+        android:id="@+id/detailsFragment"
+        android:name="com.breaking.bad.framework.presentation.fragments.DetailsFragment"
+        android:label="fragment_details"
+        tools:layout="@layout/fragment_details" >
+
+        <argument
+            app:nullable="true"
+            android:name="character"
+            app:argType="com.breaking.bad.framework.datasource.model.Character"
+            android:defaultValue="@null"/>
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.breaking.bad.framework.presentation.fragments.ListFragment"
+        android:label="fragment_list"
+        tools:layout="@layout/fragment_list" >
+
+        <action
+            android:id="@+id/action_listFragment_to_detailsFragment"
+            app:destination="@id/detailsFragment"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left">
+            <argument
+                app:nullable="true"
+                android:name="character"
+                app:argType="com.breaking.bad.framework.datasource.model.Character"
+                android:defaultValue="@null"/>
+
+        </action>
+
+
+
+    </fragment>
+</navigation>
